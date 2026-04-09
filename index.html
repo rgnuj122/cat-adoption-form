@@ -30,9 +30,20 @@
     header {
       background: linear-gradient(135deg, #fbcfe8 0%, #e9d5ff 100%);
       text-align: center;
-      padding: 60px 20px 40px;
+      padding: 0;
       position: relative;
       overflow: hidden;
+    }
+    .hero-img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .hero-text {
+      padding: 36px 20px 30px;
+      position: relative;
     }
     header::before {
       content: '🐾';
@@ -237,8 +248,8 @@
 
 <!-- ════ HERO ════ -->
 <header>
-  <img src="cover.jpg" alt="ㄈ系貓貓趣封面" style="width:100%;max-height:420px;object-fit:cover;display:block;margin-bottom:0;" />
-  <div style="padding:40px 20px 30px;position:relative;">
+  <img src="cover.jpg" alt="ㄈ系貓貓趣封面" class="hero-img" />
+  <div class="hero-text">
     <span class="badge">🐱 以領養代替購買</span>
     <h1>領養貓咪 Q&amp;A</h1>
     <p class="sub">by <a href="https://reurl.cc/QybVZ" target="_blank">ㄈ系貓貓趣</a>　｜　#cat 🐾</p>
