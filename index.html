@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>領養貓咪 Q&A｜新竹系貓中途</title>
+  <style>
+    :root {
+      --pink:    #f9a8d4;
+      --pink-l:  #fce7f3;
+      --pink-d:  #ec4899;
+      --purple:  #c084fc;
+      --purple-l:#f3e8ff;
+      --cream:   #fffbf5;
+      --text:    #4a2c2a;
+      --muted:   #9d7b7b;
+      --card:    #fff;
+      --radius:  16px;
+      --shadow:  0 4px 20px rgba(236,72,153,.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Helvetica Neue', Arial, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* ── Hero ── */
+    header {
+      background: linear-gradient(135deg, #fbcfe8 0%, #e9d5ff 100%);
+      text-align: center;
+      padding: 60px 20px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '🐾';
+      position: absolute; font-size: 120px; opacity: .08;
+      top: -10px; left: -20px; transform: rotate(-20deg);
+    }
+    header::after {
+      content: '🐾';
+      position: absolute; font-size: 100px; opacity: .08;
+      bottom: -10px; right: -10px; transform: rotate(15deg);
+    }
+    header .badge {
+      display: inline-block;
+      background: var(--pink-d);
+      color: #fff;
+      font-size: .75rem;
+      padding: 3px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      letter-spacing: .05em;
+    }
+    header h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      color: #7e22ce;
+      text-shadow: 0 2px 8px rgba(236,72,153,.2);
+    }
+    header p.sub {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    header p.sub a { color: var(--pink-d); text-decoration: none; font-weight: 600; }
+
+    /* ── Nav ── */
+    nav {
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(236,72,153,.15);
+      position: sticky; top: 0; z-index: 100;
+      overflow-x: auto; white-space: nowrap;
+      padding: 0 16px;
+    }
+    nav a {
+      display: inline-block;
+      padding: 14px 14px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: .85rem;
+      font-weight: 600;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--pink-d); }
+
+    /* ── Layout ── */
+    main {
+      max-width: 860px;
+      margin: 40px auto;
+      padding: 0 20px 60px;
+    }
+
+    /* ── Section card ── */
+    section {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px 36px;
+      margin-bottom: 36px;
+      border-top: 4px solid var(--pink);
+      position: relative;
+    }
+    section h2 {
+      font-size: 1.4rem;
+      color: #7e22ce;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    section h2 .ico { font-size: 1.5rem; }
+    h3 {
+      font-size: 1.05rem;
+      color: var(--pink-d);
+      margin: 20px 0 8px;
+    }
+    p, li { margin-bottom: 6px; }
+    ul, ol { padding-left: 22px; }
+    li { margin-bottom: 4px; }
+    a { color: var(--pink-d); }
+    a:hover { color: var(--purple); }
+
+    /* ── Highlight box ── */
+    .note {
+      background: var(--pink-l);
+      border-left: 4px solid var(--pink-d);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: .93rem;
+    }
+    .warn {
+      background: #fef9c3;
+      border-left: 4px solid #eab308;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: .93rem;
+    }
+    .danger {
+      background: #fee2e2;
+      border-left: 4px solid #ef4444;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: .93rem;
+    }
+
+    /* ── Image ── */
+    .cat-img {
+      border-radius: 12px;
+      margin: 10px 0;
+      max-width: 100%;
+      border: 3px solid var(--pink-l);
+    }
+    .img-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 10px 0; }
+    .img-row img { border-radius: 12px; border: 3px solid var(--pink-l); }
+
+    /* ── Table ── */
+    .price-table {
+      width: 100%; border-collapse: collapse;
+      margin: 20px 0; font-size: .9rem;
+    }
+    .price-table th {
+      background: linear-gradient(135deg, #fbcfe8, #e9d5ff);
+      color: #7e22ce;
+      padding: 12px 16px;
+      text-align: center;
+    }
+    .price-table td {
+      padding: 14px 16px;
+      text-align: center;
+      border-bottom: 1px solid var(--pink-l);
+    }
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table tr:nth-child(even) td { background: var(--purple-l); }
+    .stars { color: #f59e0b; font-size: 1.1rem; }
+
+    /* ── Checklist ── */
+    .checklist { list-style: none; padding-left: 0; }
+    .checklist li::before { content: '🐾 '; }
+
+    /* ── CTA button ── */
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--pink-d), var(--purple));
+      color: #fff !important;
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .9rem;
+      margin: 8px 4px;
+      box-shadow: 0 4px 12px rgba(236,72,153,.3);
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(236,72,153,.4);
+    }
+
+    /* ── Q&A style ── */
+    .qa-item { margin-bottom: 20px; }
+    .qa-q {
+      background: var(--purple-l);
+      border-radius: 10px 10px 0 0;
+      padding: 10px 16px;
+      font-weight: 700;
+      color: #6d28d9;
+    }
+    .qa-a {
+      background: var(--pink-l);
+      border-radius: 0 0 10px 10px;
+      padding: 12px 16px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--muted);
+      font-size: .85rem;
+      border-top: 2px dashed var(--pink);
+      margin-top: 20px;
+    }
+    footer .paws { font-size: 1.5rem; letter-spacing: 4px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      section { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════ HERO ════ -->
+<header>
+  <span class="badge">🐱 以領養代替購買</span>
+  <h1>領養貓咪 Q&amp;A</h1>
+  <p class="sub">by <a href="https://reurl.cc/QybVZ" target="_blank">新竹系貓中途</a>　｜　#cat 🐾</p>
+</header>
+
+<!-- ════ NAV ════ -->
+<nav>
+  <a href="#adopt">領養須知</a>
+  <a href="#cond">認養條件</a>
+  <a href="#food">飲食推薦</a>
+  <a href="#taboo">飲食忌諱</a>
+  <a href="#litter">貓砂</a>
+  <a href="#play">玩耍娛樂</a>
+  <a href="#home">居家防護</a>
+  <a href="#winter">冬日保暖</a>
+  <a href="#clean">居家整潔</a>
+  <a href="#interact">互動問題</a>
+  <a href="#medical">醫療照護</a>
+  <a href="#first">初次帶貓</a>
+  <a href="#emergency">緊急狀況</a>
+  <a href="#other">其他途徑</a>
+  <a href="#donate">募款物資</a>
+  <a href="#about">關於我</a>
+</nav>
+
+<main>
+
+  <!-- ════ 領養須知 ════ -->
+  <section id="adopt">
+    <h2><span class="ico">📋</span> 領養須知</h2>
+    <div class="note">
+      欲領養請先填寫認養評估調查表，並私訊通知管理員已填寫
+      <br/>
+      <a class="btn" href="https://forms.gle/JwiXbQGkV3iMn5P5A" target="_blank">📝 前往填寫認養評估調查</a>
+    </div>
+
+    <h3>認養當天需攜帶物品</h3>
+    <ul class="checklist">
+      <li>硬式提籠</li>
+      <li>身分證</li>
+      <li>押金及醫療費</li>
+    </ul>
+
+    <div class="note">
+      簡化流程：當天簽完 <strong>認養切結書</strong> 後就可以帶走貓 🐱
+    </div>
+
+    <p>請先下載認養協議書並詳閱幾天，對條文有意見可以私訊討論：</p>
+    <a class="btn" href="https://drive.google.com/file/d/10xdjTP-tRVaF2-zCMQVqoqQqQw3tLhkd/view?usp=sharing" target="_blank">📄 認養協議書下載</a>
+
+    <ul style="margin-top:16px;">
+      <li>試養兩週內可退回</li>
+      <li>不家訪亦不開放看貓</li>
+      <li>簽民事契約需滿 18 歲且為台灣人，外國人難以追蹤，除非有辦法說服我，否則不送</li>
+      <li>如果領養的小貓還沒做過驅蟲，領養後要帶去獸醫院做體內外驅蟲</li>
+      <li>如果領養的小貓有做過驅蟲，但家裡有貓，強烈建議先做體外驅蟲再帶回家（中途之家貓口多，防不勝防）</li>
+    </ul>
+  </section>
+
+  <!-- ════ 認養條件 ════ -->
+  <section id="cond">
+    <h2><span class="ico">📜</span> 認養條件</h2>
+    <ul>
+      <li>🚫 不關籠、不放養、不綁繩，勿動手打貓、勿大聲責罵，請好好對待牠</li>
+      <li>🚫 不可以把貓養在廁所或其他潮濕、不通風的地方</li>
+      <li>🏠 做好居家門戶防護，盡量避免走失（貓很會突破紗窗）</li>
+      <li>💊 生病要帶去看醫生，定期打預防針，需植晶片與結紮</li>
+      <li>📸 不定期主動傳照片回報狀況（幾個月一次），有異常如走失或死亡請一定要通知</li>
+      <li>💰 需幫忙補貼在中途時的醫療費，依收據金額為準</li>
+      <li>💰 若送養時未結紮，需收押金 2000 元，結紮＋疫苗＋晶片回傳證明照片後退還</li>
+      <li>🐱 家裡沒有貓的話可一次帶兩隻，有助於社會化與穩定個性</li>
+      <li>💼 需有穩定收入或經濟基礎，建議每個月有 5000 元餘裕再考慮養貓</li>
+      <li>🏠 須徵得家人同意；在外租房者，須房東同意飼養</li>
+      <li>📝 須簽認養切結書，年滿 18 歲</li>
+      <li>🔄 不養須直接退還給我，勿私下處理（切結書有法律效力）</li>
+      <li>⏳ 如果確定要領養但不方便三天內來，可預約保留並匯助養金（一天 40 元），以三個月為限</li>
+      <li>👤 認養時請親自來接貓，請勿請他人代理</li>
+      <li>💳 晶片轉移書會在認養兩週後以電子檔寄出，請帶貓到寵登站或獸醫院做轉移登記</li>
+    </ul>
+    <div class="warn">
+      🔔 男需服完兵役，謝絕情侶共養，不要丟給另一半（或家人、朋友）養
+    </div>
+    <div class="warn">
+      🔔 無論任何理由退養，不可要求中途支付返貓交通費或任何賠償，須自行送返
+    </div>
+  </section>
+
+  <!-- ════ 飲食推薦 ════ -->
+  <section id="food">
+    <h2><span class="ico">🍽️</span> 飲食推薦</h2>
+
+    <h3>🥣 飼料推薦</h3>
+    <ul>
+      <li>目前在用：<strong>優格牌無穀鮭魚飼料</strong>（蝦皮比價後購買較划算，7kg 約 1200–1400 元）</li>
+      <li>別買大賣場的不知名彩色飼料，太鹹吃久了貓容易得腎臟病</li>
+    </ul>
+
+    <div class="qa-item">
+      <div class="qa-q">Q：飼料要不要泡水？</div>
+      <div class="qa-a">乾飼料泡水很難吃（就像洋芋片泡水），而且很容易腐敗。如果貓咪健康，放乾飼料給牠吃，保持乾燥就好。</div>
+    </div>
+
+    <h3>💧 飲水</h3>
+    <ul>
+      <li>給生水（水龍頭水）容易生病，人喝什麼水就給貓喝什麼水</li>
+      <li>流動飲水機可有效增加貓咪喝水次數</li>
+    </ul>
+
+    <h3>🥫 餐食安排</h3>
+    <ul>
+      <li>一天兩餐，可晚上放濕食，平常放乾飼料（乾乾任食制）</li>
+      <li>濕食推薦買主食罐拌 ⅓ 水，用不完放冰箱，一罐 80g 可以吃兩餐</li>
+      <li>副食罐好吃但須少吃，營養仍需以主食罐為主</li>
+      <li>剩下的放保鮮盒冰起來，要用時微波回常溫即可</li>
+    </ul>
+
+    <h3>🛒 罐頭推薦</h3>
+    <ul>
+      <li>副食罐：MONGE 養生湯罐、大金罐</li>
+      <li>主食罐：紐西蘭 狂野主廚 貓咪無穀主食罐</li>
+    </ul>
+    <div class="note">通常在蝦皮找便宜的罐頭，一個大概 20 元上下，不吃的下次就不買了 😊</div>
+  </section>
+
+  <!-- ════ 飲食忌諱 ════ -->
+  <section id="taboo">
+    <h2><span class="ico">⚠️</span> 飲食忌諱</h2>
+    <div class="danger">
+      <strong>絕對禁止！</strong><br/>
+      🧅 洋蔥、大蒜｜🍫 巧克力｜🍇 葡萄｜☕ 咖啡因<br/>
+      未成熟的蕃茄及馬鈴薯 ── 嚴重者會立即死亡！<br/>
+      <a href="https://health.ettoday.net/news/724934" target="_blank">👉 詳細貓咪中毒食物清單</a>
+    </div>
+    <div class="danger">
+      <strong>有毒盆栽：</strong>黃金葛、百合等 ── 嚴重者會立即死亡！<br/>
+      <a href="https://www.dogcatstar.com/blog-poisonous-plants/" target="_blank">👉 居家常見有毒植物列表</a>
+    </div>
+    <div class="warn">
+      <strong>忌鹽：</strong>貓的腎臟很小，難以排除鹽分，不可餵食人吃的調味食物（除非是自己煮的無調味鮮食）<br/>
+      <a href="https://www.facebook.com/ladyflavor.tw/" target="_blank">👉 好味小姐鮮食製作指南</a>
+    </div>
+  </section>
+
+  <!-- ════ 貓砂 ════ -->
+  <section id="litter">
+    <h2><span class="ico">🪣</span> 貓砂</h2>
+
+    <h3>木屑砂（目前使用）</h3>
+    <ul>
+      <li>✅ 好清理，木屑香味可蓋過貓尿臭</li>
+      <li>❌ 貓接受度不高</li>
+      <li>使用方法：貓糞撿起來丟馬桶沖掉，木屑幾天集中丟垃圾桶</li>
+      <li><a href="https://xinher.com.tw/Product.aspx?ProductID=117" target="_blank">👉 新和木屑砂（便宜好用）</a></li>
+    </ul>
+
+    <h3>礦砂</h3>
+    <ul>
+      <li>✅ 貓咪最愛</li>
+      <li>❌ 易臭、需常清理，每天都要倒垃圾</li>
+      <li>推薦：好事多綠桶、藍鑽貓砂</li>
+      <li>推薦封閉式或高度夠高的貓砂盆，避免噴砂</li>
+    </ul>
+
+    <h3>貓砂盆數量</h3>
+    <div class="note">
+      建議貓砂盆數量 ＝ 家裡貓口數 ＋ 1<br/>
+      有兩隻貓就要擺 <strong>三個</strong> 貓砂盆
+    </div>
+
+    <h3>電動貓砂盆比較</h3>
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>品牌</th>
+          <th>評分</th>
+          <th>價格（2023/8/13）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>petree</strong></td>
+          <td><span class="stars">⭐⭐⭐⭐⭐</span></td>
+          <td>6,280 NT</td>
+        </tr>
+        <tr>
+          <td><strong>小佩二代 max</strong></td>
+          <td><span class="stars">⭐⭐⭐</span></td>
+          <td>15,800 NT</td>
+        </tr>
+        <tr>
+          <td><strong>petjc</strong></td>
+          <td><span class="stars">⭐</span></td>
+          <td>7,800 NT</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ════ 玩耍娛樂 ════ -->
+  <section id="play">
+    <h2><span class="ico">🎾</span> 玩耍娛樂</h2>
+
+    <div class="qa-item">
+      <div class="qa-q">Q：需要買貓跳台嗎？</div>
+      <div class="qa-a">不太建議。很容易積灰塵，布面難清。把書櫃清出空間讓貓爬就很好了！</div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">Q：需要買貓窩嗎？</div>
+      <div class="qa-a">台灣天氣熱，帳棚式貓咪不愛，清洗也困難。貓反而愛跟主人擠床 😂</div>
+    </div>
+
+    <h3>玩具推薦</h3>
+    <ul class="checklist">
+      <li>伸縮貓釣竿（非常好用！）<br/><img src="https://i.imgur.com/oltTdj8.png" alt="貓釣竿" class="cat-img" style="max-width:200px;" /></li>
+      <li>瓦楞紙貓抓板或麻繩貓抓板<br/><img src="https://i.imgur.com/sCzgcGv.png" alt="貓抓板" class="cat-img" style="max-width:200px;" /></li>
+    </ul>
+  </section>
+
+  <!-- ════ 居家防護 ════ -->
+  <section id="home">
+    <h2><span class="ico">🏠</span> 居家防護</h2>
+
+    <h3>門窗防護</h3>
+    <ul>
+      <li>紗窗加鐵網格，可防止貓開紗窗，也可保護紗窗不被抓壞</li>
+      <li><a href="https://www.lovecats.tw/%E8%B2%93%E5%92%AA%E9%96%80%E7%AA%97%E6%88%B6%E9%98%B2%E8%AD%B7/" target="_blank">👉 貓咪門窗防護懶人包</a></li>
+      <li>推薦蝦皮網購網片，一扇窗大概 200 元就搞定</li>
+      <li>房間門若是平把，要小心被貓開門，可以買門擋</li>
+    </ul>
+    <img src="https://i.imgur.com/171OSD5.png" alt="電線包覆管" class="cat-img" style="max-width:300px;"/>
+
+    <h3>其他注意事項</h3>
+    <ul>
+      <li>貴重物品自行收好，尤其是手機、電子產品及易碎物</li>
+      <li>清潔劑、藥品、電線或可能吞入的小東西都要收好</li>
+      <li>貓咪愛咬電線 → 買電線包覆管包起來</li>
+    </ul>
+  </section>
+
+  <!-- ════ 冬日保暖 ════ -->
+  <section id="winter">
+    <h2><span class="ico">🌨️</span> 冬日保暖</h2>
+    <p>推薦這款電熱床墊，有調溫度跟定時的功能，躺起來很舒服 🥰</p>
+    <img src="https://i.imgur.com/ZzxWBHf.jpg" alt="電熱床墊" class="cat-img" style="max-width:200px;"/>
+  </section>
+
+  <!-- ════ 居家整潔 ════ -->
+  <section id="clean">
+    <h2><span class="ico">✨</span> 居家整潔</h2>
+    <ul>
+      <li>貓咪易掉毛，推薦用掃地機器人 1–3 天吸一次（小米機器人第一代約 7000 元，相當好用）</li>
+    </ul>
+
+    <div class="qa-item">
+      <div class="qa-q">Q：需要幫貓洗澡嗎？</div>
+      <div class="qa-a">看個人，貓有天然的油脂分泌保護層，會自己理毛，除非沾到屎不然不需要洗。小於三個月的貓最好不要洗澡（抵抗力太差）。</div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q">Q：需要夏天幫貓剃毛嗎？</div>
+      <div class="qa-a">短毛米克斯不需要，會自己代謝毛髮。剃過一次之後就不想再剃第二次了，不好看又沒什麼用。</div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q">Q：貓咪尿在床上怎麼辦？</div>
+      <div class="qa-a">目前無解，有些貓就是會尿。建議一定要買 <strong>保潔墊（全包覆式）</strong>，不然床墊很快就會報廢。</div>
+    </div>
+  </section>
+
+  <!-- ════ 互動問題 ════ -->
+  <section id="interact">
+    <h2><span class="ico">💕</span> 互動問題</h2>
+
+    <div class="qa-item">
+      <div class="qa-q">Q：貓咪會爬上床跟人睡嗎？</div>
+      <div class="qa-a">有些貓會，有些不會，不能勉強。可以透過常跟貓說話、撫摸擁抱增加親密度。</div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q">Q：聽說幼貓有伴一起長大比較不無聊？</div>
+      <div class="qa-a">對！有伴可以互動遊戲，有助於社會化跟穩定個性。很多人領養一隻後，再問我有沒有其他幼貓可以陪伴 😆</div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q">Q：怎麼樣跟貓培養感情？</div>
+      <div class="qa-a">
+        <ul>
+          <li>直視牠雙眼，慢慢地眨眼（釋放友好訊息）</li>
+          <li>每天撫摸、抱抱、跟牠說話</li>
+          <li>用貓玩具跟牠玩</li>
+          <li>給牠吃好吃的 🥰</li>
+        </ul>
+      </div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q">Q：貓太愛玩怎麼辦？凌晨衝刺怎麼辦？</div>
+      <div class="qa-a">前一天晚上先用貓釣竿讓牠玩到精疲力盡，就會睡很好了！</div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q">Q：貓一直叫怎麼辦？</div>
+      <div class="qa-a">
+        <ul>
+          <li>建議乾乾放一整天讓牠吃</li>
+          <li>確認結紮了嗎？是不是發情？</li>
+          <li>下次再叫先觀察不要理牠，等牠習慣叫了沒人理就不太會叫了</li>
+          <li>或再養一隻貓陪牠分散注意力</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="danger">⚠️ 特別注意：不可以只拉貓咪尾巴，會導致癱瘓！</div>
+    <div class="warn">
+      抱貓時注意：一手托胸、一手托屁股，勿只抓背部或手腳，會導致脫臼。<br/>
+      <a href="https://kknews.cc/zh-tw/pet/np4pgr5.html" target="_blank">👉 抱貓正確姿勢參考</a>
+    </div>
+    <div class="img-row">
+      <img src="https://i.imgur.com/hI3TJzE.png" alt="抱貓姿勢1" style="max-width:200px;" />
+      <img src="https://i.imgur.com/pG32e2L.png" alt="抱貓姿勢2" style="max-width:400px;" />
+    </div>
+  </section>
+
+  <!-- ════ 醫療照護 ════ -->
+  <section id="medical">
+    <h2><span class="ico">💉</span> 醫療照護</h2>
+
+    <h3>疫苗（每年固定施打）</h3>
+    <ul class="checklist">
+      <li>二劑三合一 [$750 × 2]</li>
+      <li>狂犬病 [$200]</li>
+      <li>腹膜炎疫苗 [$800]</li>
+    </ul>
+    <div class="note">照著防疫手冊的時間回診就好了 📅</div>
+
+    <h3>結紮時機</h3>
+    <ul>
+      <li>母貓建議 <strong>6 個月大</strong>、公貓建議 <strong>8 個月大</strong> 結紮</li>
+      <li>⚠️ 公貓不可太早結紮，否則容易尿道狹窄，晚年容易尿結石</li>
+      <li>米克斯結紮政府有補助，請洽<strong>戶籍地的動物防疫所</strong>查詢配合獸醫院清單</li>
+      <li>結紮後會稍微變胖，變得更可愛喔 🥰</li>
+    </ul>
+
+    <h3>不結紮的後果</h3>
+    <div class="danger">
+      <ul>
+        <li>母貓容易得子宮蓄膿（死亡率高）</li>
+        <li>公貓發情時會四處噴尿</li>
+        <li>發情時貓叫聲像嬰兒啼哭，吵一整晚</li>
+        <li>任由家中寵物繁殖也會觸法，罰款 5–25 萬</li>
+      </ul>
+    </div>
+
+    <h3>刷牙</h3>
+    <ul>
+      <li>需要刷牙，請參考 <a href="http://lokaloka.tw/brushing-your-cats-teeth/" target="_blank">👉 貓刷牙教學</a></li>
+      <li>特別注意：犬齒門牙縫、臼齒凹槽、牙齒與牙齦交界處</li>
+    </ul>
+    <img src="https://i.imgur.com/vptw4Ei.png" alt="刷牙部位" class="cat-img" style="max-width:100%;"/>
+
+    <h3>口炎 / 牙齦炎</h3>
+    <div class="warn">
+      幾乎 ⅓ 浪浪會有齒齦炎，特徵：嘴巴臭、流口水、吃東西會痛到低吼、拒絕喝水。
+      <ul style="margin-top:8px;">
+        <li>請帶給醫生做檢查，若評估可拔牙請早點做</li>
+        <li>貓咪沒牙齒也可以吞乾飼料，不需過於擔心</li>
+        <li>蝶豆花水可抗發炎，跟著泡軟飼料一起給貓吃，可減緩牙痛</li>
+        <li>不妥善處理容易引發腎衰竭</li>
+      </ul>
+    </div>
+
+    <h3>推薦獸醫院</h3>
+    <div class="note">
+      🏥 <strong>淇寶寶動物醫院</strong>（醫生人很好很專業）<br/>
+      📍 300 新竹市東區光復路一段 360-22 號<br/>
+      📞 03 563 1093<br/>
+      <a href="https://goo.gl/maps/GBgcjBqPtmyuftTC7" target="_blank">👉 Google 地圖</a>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">Q：家裡有小孩會過敏嗎？</div>
+      <div class="qa-a">可以從小養貓來培養免疫力喔！</div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q">Q：懷孕了家人說要把貓送走怎麼辦？</div>
+      <div class="qa-a">懷孕養貓感染弓漿蟲是錯誤的，除非天天吃貓大便則不會感染。<br/>
+        <a href="https://aprilgril.pixnet.net/blog/post/41277877" target="_blank">👉 懷孕養貓的正確知識</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ 初次帶貓 ════ -->
+  <section id="first">
+    <h2><span class="ico">🏡</span> 初次帶貓</h2>
+
+    <h3>初次養貓要準備什麼？</h3>
+    <ul class="checklist">
+      <li>硬式提籠（要夠大，成貓約 7 公斤）</li>
+      <li>飼料碗 & 飲水碗</li>
+      <li>飼料 & 罐頭</li>
+      <li>貓砂 & 貓砂盆</li>
+      <li>窗戶加鐵格網</li>
+      <li>貓玩具</li>
+    </ul>
+
+    <h3>推薦外出籠</h3>
+    <p>硬式上掀式，尺寸選大一點（預設 7 公斤貓可舒服躺著）</p>
+    <img src="https://i.imgur.com/XaLRJUZ.jpg" alt="外出籠" class="cat-img" style="max-width:200px;"/>
+
+    <h3>帶貓回家注意事項</h3>
+    <ul>
+      <li><a href="https://stupidlove34.pixnet.net/blog/post/18779990" target="_blank">👉 養貓新手上路完整指南</a></li>
+      <li>帶貓回家後，<strong>請不要馬上把貓從提籠中抱出來</strong>，讓牠自己決定什麼時候想走出來</li>
+      <li>把罐頭跟水放在牠附近就可以了，等牠可以接受就會走出來</li>
+    </ul>
+
+    <h3>家裡已有貓，帶新貓回家怎麼做？</h3>
+    <ul>
+      <li>若原先是流浪貓，先帶去獸醫院體內外驅蟲與打預防針，帶回家後用另一個房間隔離 2 週（貓瘟潛伏期有 10 天）</li>
+      <li>若是領養的貓，已做完健康檢查，需先隔離三天讓舊貓習慣新貓的味道</li>
+      <li><a href="https://www.facebook.com/media/set/?set=a.4016680821738768&type=3" target="_blank">👉 貓咪照護指南（混居方法）</a></li>
+    </ul>
+  </section>
+
+  <!-- ════ 緊急狀況 ════ -->
+  <section id="emergency">
+    <h2><span class="ico">🆘</span> 緊急狀況</h2>
+
+    <div class="qa-item">
+      <div class="qa-q">Q：遇到奶貓怎麼辦？</div>
+      <div class="qa-a">
+        <ul>
+          <li>先原地等看母貓在不在，通常幾小時內出現把奶貓叼走</li>
+          <li>若母貓確定不在了，先安置保暖送醫</li>
+          <li>自行奶貓或上網求助：<a href="https://www.facebook.com/kittensave/" target="_blank">奶貓救援隊</a></li>
+        </ul>
+        <a href="http://dogcatstar.pixnet.net/blog/post/177577110" target="_blank">👉 奶貓照顧新手須知</a>
+      </div>
+    </div>
+
+    <img src="https://i.imgur.com/ZL4encr.png" alt="奶貓" class="cat-img" style="max-width:300px;"/>
+
+    <div class="qa-item">
+      <div class="qa-q">Q：遇到街貓很親人，想幫牠找主人怎麼辦？</div>
+      <div class="qa-a">
+        可以在網路上發認養文：
+        <ul>
+          <li><a href="https://www.facebook.com/groups/408954489141421/" target="_blank">貓咪幼幼班 北部認養專區</a></li>
+          <li><a href="https://www.facebook.com/groups/Crazymomi/" target="_blank">貓咪也瘋狂俱樂部</a></li>
+          <li><a href="http://www.meetpets.org.tw/" target="_blank">台灣認養地圖</a></li>
+          <li><a href="https://www.ptt.cc/bbs/cat/index.html" target="_blank">PTT 貓版</a> & <a href="https://www.ptt.cc/bbs/Pet_Get/index.html" target="_blank">PetGet 板</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">Q：可以拜託你中途嗎？</div>
+      <div class="qa-a">
+        我接貓有自己的考量（房間大小、隔離條件、照護時間等），除非情況很緊急或愛媽中途求援才會免費接，其他視情況收費。中途費用約一個月 1500–3000 元。
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ 其他途徑 ════ -->
+  <section id="other">
+    <h2><span class="ico">🔍</span> 其他領養途徑推薦</h2>
+    <p>希望大家多多以領養代替購買！</p>
+    <ul>
+      <li><a href="https://www.facebook.com/catfirst.tw/" target="_blank">新屋貓舍義工團</a>（桃園有固定送養點，可預約前去看貓）</li>
+      <li><a href="https://www.pet.gov.tw/AnimalApp/AnnounceMent_Announce.aspx" target="_blank">各地收容所 — 全國動物收容系統</a></li>
+      <li><a href="http://www.meetpets.org.tw/" target="_blank">台灣認養地圖</a></li>
+      <li><a href="https://www.facebook.com/groups/catfirst/" target="_blank">台灣新屋動物收容所</a></li>
+    </ul>
+  </section>
+
+  <!-- ════ 募款物資 ════ -->
+  <section id="donate">
+    <h2><span class="ico">💝</span> 募款物資</h2>
+    <p>因為我家沒有很大，如果想要捐東西給貓咪的話，<strong>盡量捐款</strong>就好，我通常都是在網路上購買的。</p>
+    <div class="note">
+      請私訊我，我會把帳號給你，謝謝 🙏<br/>
+      如果家裡有多的罐頭或肉泥條也可以捐，但乾飼料我會挑品牌。<br/>
+      目前慣用口味：<strong>優格貓飼料 鮭魚口味</strong>
+    </div>
+    <div class="warn">不可以常換飼料，會引起腸胃問題！</div>
+  </section>
+
+  <!-- ════ 關於我 ════ -->
+  <section id="about">
+    <h2><span class="ico">🐾</span> 關於我</h2>
+    <p>本人為愛心義工私人中途，閒暇時間才能救貓，不是動物協會、沒有組織、也沒有經費。能力所及最多一次只能收留 5 隻，希望可以多多幫助流浪貓，不管是送養還是宣導分享都盡力去做。</p>
+    <p>沒有要靠貓賺錢，事實上貓吃的拉的金額比想像中恐怖的多，愛心人士捐贈的中途費我一定只用在貓咪身上。人力不足，有什麼不周的地方請見諒。</p>
+    <div class="note">有空時也請多多留言鼓勵愛心中途，做過就知道真的很不容易 💪</div>
+
+    <h3>小額捐款</h3>
+    <p>用途為日常飼料貓砂費，捐款明細皆公布於粉專。轉帳帳號請私訊粉專洽詢。</p>
+
+    <div class="note">
+      📢 本網頁免費授權給想幫助貓咪的中途使用，<strong>禁止用於商業用途</strong>（斂財）
+    </div>
+  </section>
+
+</main>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="paws">🐾 🐱 🐾</div>
+  <p style="margin-top:10px;">以領養代替購買　讓每隻貓都有溫暖的家</p>
+  <p>Created by <a href="https://reurl.cc/QybVZ" target="_blank">新竹系貓中途</a></p>
+</footer>
+
+</body>
+</html>
